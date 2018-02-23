@@ -2,7 +2,7 @@
 #   "image_codespaces/puppet-node-centos-6:v0.1.3"
 
 
-- hosts: image_puppet_node
+- hosts: node
   connection: docker
   gather_facts: no
   become: yes
@@ -11,26 +11,33 @@
      shell: /bin/bash -l -c "/opt/puppetlabs/bin/puppet agent -t" || true
      register: result
    - name: debug
-     debug: 
+     debug:
        var: result
        verbosity: 1
-     
-     
-- hosts: image_puppet_master
+
+
+- hosts: puppet
   connection: docker
   become: yes
   tags:
    - sign
   tasks:
+   - name: Show incoming certs
+     shell:  /opt/puppetlabs/bin/puppet cert list
+     register: result
+   - name: debug
+     debug:
+       var: result
+       verbosity: 1
    - name: Sign all certs
      shell:  /opt/puppetlabs/bin/puppet cert sign -y --all
      register: result
    - name: debug
-     debug: 
+     debug:
        var: result
        verbosity: 1
 
-- hosts: image_puppet_node
+- hosts: node
   connection: docker
   gather_facts: no
   become: yes
@@ -39,7 +46,7 @@
      shell: /bin/bash -l -c "/opt/puppetlabs/bin/puppet agent -t" || true
      register: result
    - name: debug
-     debug: 
+     debug:
        var: result
        verbosity: 1
-     
+
