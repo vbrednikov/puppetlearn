@@ -6,7 +6,7 @@ networks:
 
 services:
   puppet:
-    image: puppet_master
+    image: puppet-master
     ports:
       - "8000:8000"
       - "2222:22"
@@ -22,7 +22,7 @@ services:
     restart: always
 
   node1:
-    image: puppet_node
+    image: codespaces/puppet-node-centos-6:v0.1.3
     ports:
        - "8081:8080"
        - "81:80"
@@ -34,7 +34,7 @@ services:
     restart: always
 
   node2:
-    image: puppet_node
+    image: codespaces/puppet-node-centos-6:v0.1.3
     ports:
        - "8082:8080"
        - "82:80"
@@ -46,7 +46,7 @@ services:
     restart: always
 
   node3:
-    image: puppet_node
+    image: codespaces/puppet-node-centos-6:v0.1.3
     ports:
       - "8083:8080"
       - "83:80"
@@ -58,7 +58,7 @@ services:
     restart: always
 
   node4:
-    image: puppet_node
+    image: codespaces/puppet-node-centos-6:v0.1.3
     ports:
       - "8084:8080"
       - "80:80"
