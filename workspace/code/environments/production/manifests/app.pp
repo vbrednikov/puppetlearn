@@ -5,6 +5,13 @@ node 'node1' {
 
 }
 
+node 'node2' {
+
+    notify {"***** NODE2 BLOCK *****": }
+    include java::install
+
+}
+
 node default {
 
     notify{"checkpoint_1":
