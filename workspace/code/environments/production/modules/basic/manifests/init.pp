@@ -1,7 +1,7 @@
-# Class: tomcat
+# Class: basic
 # ===========================
 #
-# Full description of class tomcat here.
+# Full description of class basic here.
 #
 # Parameters
 # ----------
@@ -28,7 +28,7 @@
 # --------
 #
 # @example
-#    class { 'tomcat':
+#    class { 'basic':
 #      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #    }
 #
@@ -42,11 +42,8 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class tomcat {
+class basic {
 
-    include java::install
-    include tomcat::install
-    include tomcat::service
-
+    include basic::install
 
 }
