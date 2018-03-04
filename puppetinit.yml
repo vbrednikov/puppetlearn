@@ -24,17 +24,16 @@
   handlers:
    - name: restart puppetserver
      service: name=puppetserver state=restarted
-
   tasks:
    - name: Show incoming certs
-     shell:  /opt/puppetlabs/bin/puppet cert list
+     shell:  /opt/puppetlabs/bin/puppet cert list || true
      register: result
    - name: debug
      debug:
        var: result
        verbosity: 1
    - name: Sign all certs
-     shell:  /opt/puppetlabs/bin/puppet cert sign -y --all
+     shell:  /opt/puppetlabs/bin/puppet cert sign -y --all || true
      register: result
    - name: debug
      debug:
@@ -51,13 +50,14 @@
        line: "    master-code-dir: /workspace/code"
      notify: restart puppetserver
 
-- hosts: node
+
+- hosts: [node, puppet]
   connection: docker
   gather_facts: no
   become: yes
   tasks:
-   - name: apply configuration
-     shell: /bin/bash -l -c "/opt/puppetlabs/bin/puppet agent -t" || true
+   - name: apply puppet configuration
+     shell: /bin/bash -l -c "yum -y clean all; /opt/puppetlabs/bin/puppet agent -t" || true
      register: result
    - name: debug
      debug:
