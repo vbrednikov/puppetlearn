@@ -2,6 +2,7 @@ node 'node1' {
 
     include basic
     include tomcat
+ #   include prefs
 
 }
 
