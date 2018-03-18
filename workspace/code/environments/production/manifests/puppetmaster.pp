@@ -1,5 +1,5 @@
 node 'puppet' {
-
-    include puppet::install
+    include base
+ #   include puppet::install
 
 }

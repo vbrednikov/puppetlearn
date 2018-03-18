@@ -1,9 +1,8 @@
 node 'node1' {
 
-    include basic
+ #   include basic
     include tomcat
- #   include prefs
-
+    include base
 }
 
 node 'node2' {
@@ -12,6 +11,7 @@ node 'node2' {
     include tomcat
 
 }
+
 
 node default {
 
