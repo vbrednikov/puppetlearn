@@ -1,13 +1,14 @@
 node 'node1' {
 
  #   include basic
-    include tomcat
     include base
+    include tomcat
+
 }
 
 node 'node2' {
 
-    include basic
+    include base
     include tomcat
 
 }
@@ -15,12 +16,8 @@ node 'node2' {
 
 node default {
 
-    notify{"default node":
+    notify{"default node":  }
 
-#       message => "***** DEFAULT BLOCK *****"
-
-    }
-
-    include basic
+    include base
 
 }
