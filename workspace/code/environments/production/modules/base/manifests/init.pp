@@ -27,7 +27,7 @@ file {'/etc/motd':
     IP address     : ${::ipaddress}
     Memory         : ${::memory['system']['total']}
     Cores          : ${::processors['count']}
-    OS             : ${::os['distro']['description']}
+    OS             : ${::os['name']} ${::os['release']['full']}
 
     ",
     group    => 0,
