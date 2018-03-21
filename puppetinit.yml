@@ -53,15 +53,16 @@
 
 - hosts: [node, puppet]
   connection: docker
-  gather_facts: no
+  gather_facts: yes
   become: yes
+  tags:
+  - clean
   tasks:
-   - name: apply puppet configuration
+   - name: clean pkg cache (rh)
      shell: /bin/bash -l -c "yum -y clean all; /opt/puppetlabs/bin/puppet agent -t" || true
      register: result
-   - name: debug
-     debug:
-       var: result
-       verbosity: 1
-
-
+     when: ansible_os_family == "RedHat"
+   - name: clean pkg cache (debian)
+     shell: /bin/bash -l -c "apt-get update; /opt/puppetlabs/bin/puppet agent -t"
+     register: result
+     when: ansible_os_family == "Debian"
