@@ -20,6 +20,6 @@ class tomcat::params {
     $catalina_tmpdir   = '/usr/share/tomcat'
     $security_manager  = 'false'
     $shutdown_verbose  = 'false'
-    $connector_port    = "8080"
+    $connector_port    = 8080
 
 }
