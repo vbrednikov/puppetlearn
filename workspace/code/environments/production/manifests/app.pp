@@ -10,7 +10,8 @@ node 'node1' {
     }
 
     tomcat::deploy {'sysfoo':
-        deploy_url => 'https://3-126643644-gh.circle-artifacts.com/0/tmp/circle-artifacts.uNl0Lc6/sysfoo.war'
+        deploy_url     => 'https://3-126643644-gh.circle-artifacts.com/0/tmp/circle-artifacts.uNl0Lc6/sysfoo.war',
+        checksum_value => '22e1fed5d1959aea9ff7625cc5c9d267',
     }
 }
 
@@ -26,7 +27,8 @@ node 'node2' {
     }
 
     tomcat::deploy {'sysfoo':
-        deploy_url => 'https://3-126643644-gh.circle-artifacts.com/0/tmp/circle-artifacts.uNl0Lc6/sysfoo.war'
+        deploy_url     => 'https://3-126643644-gh.circle-artifacts.com/0/tmp/circle-artifacts.uNl0Lc6/sysfoo.war',
+        checksum_value => '22e1fed5d1959aea9ff7625cc5c9d267',
     }
 }
 
