@@ -21,5 +21,6 @@ class tomcat::params {
     $security_manager  = 'false'
     $shutdown_verbose  = 'false'
     $connector_port    = 8080
+    $deploy_path       = '/var/lib/tomcat/webapps'
 
 }
