@@ -13,7 +13,7 @@ services:
     environment:
       JAVA_ARGS: "-Xms256m -Xmx256m -XX:MaxPermSize=256m"
     volumes:
-      - /Users/vbrednikov/puppet/workspace:/workspace
+      - /Users/vbrednikov/puppet/puppet-code/workspace:/workspace
     networks:
       - puppet
     container_name: puppet
